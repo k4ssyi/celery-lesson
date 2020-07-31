@@ -1,0 +1,17 @@
+version: "3"
+services:
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./redis:/data"
+    depends_on:
+      - app
+
+  app:
+    build: Dockerfile
+    volumes:
+      - ./src:/app/src
+    tty: true
+    stdin_open: true
